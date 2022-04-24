@@ -1,0 +1,11 @@
+.header{
+    background-color: rgb(151, 151, 160);
+    height: 40px;
+    color: black;
+}
+
+.header>h3{
+    margin: auto;
+    margin-left:10px ;
+}
+
