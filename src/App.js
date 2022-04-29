@@ -1,17 +1,28 @@
 import './App.css';
 import Login from './Login/Login';
-// import Header from './header/Header';
-// import Main from './Main/Main';
+import Header from './header/Header';
+import Main from './Main/Main';
+import { useSelector } from 'react-redux';
 
 
 
 function App() {
+  const login = useSelector((state)=>state.ChangeState.login)
+
   return (
-    <div className='app'>
-      {/* <Header/>
-      <Main/> */}
-      <Login/>
-    </div>
+    <>
+    {
+      login === 'login'?
+      <>
+           <Header/>
+           <Main/></>:
+           <Login/>
+           
+           
+   
+          }
+
+    </>
   );
 }
 

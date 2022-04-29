@@ -1,0 +1,29 @@
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px; 
+    flex-direction: column; 
+}
+div>h1{
+    margin-left: 15px;
+}
+button{
+    background-color: aliceblue;
+    height: 50px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button>img{
+   height: 15px;
+   margin-right: 5px;
+}
+
+button>p{
+    font-size: medium;
+    font-weight: 400;
+}
