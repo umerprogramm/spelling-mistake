@@ -9,7 +9,7 @@ export default function Main() {
   const [updatingValue , setupdatingValue] =  useState('')
   const [tellme , setTellme] = useState('')
   const [congratulation , setcongratulations] = useState(false)
-  const [showme , setshowme] = useState(false)
+  const [showme , setshowme] = useState('')
   const { speak } = useSpeechSynthesis();
   useEffect(() => {
     const options = {
@@ -48,8 +48,13 @@ export default function Main() {
 
 
       }
+      const Speak = ()=>{
+        speak({text : tellme })
+        setshowme('')
+      }
  const LoseTheGame =()=>{
-  setshowme(true)
+  setshowme(tellme)
+
 }
 
   return (
@@ -62,13 +67,13 @@ export default function Main() {
           <h1 style={{color : 'green',marginBottom:'15px'}}>Congratulation 🎉</h1>:
           <>
           {
-            showme === false ?
-            <h1 style={{display : 'none'}}>{tellme}</h1>:
-            <h1 style={{display : 'block'}}  >{tellme}</h1>
+            showme === '' ?
+            <h1 style={{display : 'none'}}>{showme}</h1>:
+            <h1 style={{display : 'block'}}  >{showme}</h1>
 
 
           }
-        <button  type="button" className="btn btn-primary mx-2" onClick={()=> speak({text : tellme })  }>speak</button>
+        <button  type="button" className="btn btn-primary mx-2 my-3" onClick={ Speak }>speak</button>
           
         </>
    

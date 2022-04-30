@@ -12,7 +12,7 @@ function App() {
   return (
     <>
     {
-      login === 'login'?
+      login === 'login' || localStorage.getItem('email')?
       <>
            <Header/>
            <Main/></>:
