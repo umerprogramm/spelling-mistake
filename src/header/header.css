@@ -1,5 +1,5 @@
 .header{
-    background-color: rgb(151, 151, 160);
+    background-color:rgb(226, 226, 226);
     height: 40px;
     color: black;
 }
@@ -7,5 +7,8 @@
 .header>h3{
     margin: auto;
     margin-left:10px ;
+    background: -webkit-linear-gradient(rgb(63, 204, 185), rgb(90, 125, 221));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 

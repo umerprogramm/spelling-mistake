@@ -24,7 +24,7 @@ export default function Main() {
       .then(response => response.json())
       .then(response =>{
         setTellme(response[1])
-        console.log(response[1])  
+          
       
       })
       .catch(err => console.error(err));
@@ -73,7 +73,8 @@ export default function Main() {
 
 
           }
-        <button  type="button" className="btn btn-primary mx-2 my-3" onClick={ Speak }>speak</button>
+        {/* <button  type="button" className="btn btn-primary mx-2 my-3" >speak</button> */}
+        <img src='https://static.thenounproject.com/png/1616157-200.png'onClick={ Speak }/>
           
         </>
    
