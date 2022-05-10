@@ -1,7 +1,8 @@
 .header{
     background-color:rgb(226, 226, 226);
-    height: 40px;
+    height: 60px;
     color: black;
+    display: flex;
 }
 
 .header>h3{
@@ -11,4 +12,23 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.header>button{
+    background: -webkit-linear-gradient(rgb(63, 204, 185), rgb(90, 125, 221));
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    color: aliceblue;
+    border: 3px solid white;
+    cursor: pointer;
+  
+    
 
+}
+
+
+.header>button:hover{
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

@@ -10,44 +10,42 @@ import { logIn } from '../state/actions/action';
 
 export default function Login() {
     const { save } = useNewMoralisObject("Username");
-    const { data } = useMoralisQuery("Username");
     const Dispatch = useDispatch()
 
 
 
-  const sumbit = ()=>{
-    const data = {
-      email: 'umer@gmail.com',
-      username: ' Umer'
+  // const sumbit = ()=>{
+  //   // const data = {
+  //   //   email: 'umer@gmail.com',
+  //   //   username: ' Umer'
       
-          };
+  //   //       };
 
-          save(data, {
-            onSuccess: (obj) => {
-              alert("New object created with objectId: " + obj.id);
-            },
-            onError: (error) => {
-              
-              alert("Failed to create new object, with error code: " + error.message);
-            },
-          });
-        }
+         
+  //       }
 
         async function Singn(){
     
           signInWithPopup(auth,provider)
-            .then((result) => {
-           if(result.user.email){
-            Dispatch(logIn({login : "login" }))
-             localStorage.setItem('email' , result.user.email )
-           }else{
-             alert('Sorry, You cannot login')
-           }
-          
-            
-        
-        })
-            .catch((error) => alert("sorry,you cannot sign in", error));
+          .then((result) => {
+            const data = {
+              email : result.user.email
+            }
+            save(data, {
+              onSuccess: (email) => {
+                // Execute any logic that should take place after the object is saved.
+                Dispatch(logIn({login : "login" }))
+                localStorage.setItem('email' , result.user.email )
+              },
+              onError: (error) => {
+                // Execute any logic that should take place if the save fails.
+                // error is a Moralis.Error with an error code and message.
+                alert("Failed to create new object, with error code: " + error.message);
+              },
+            });           
+             
+         
+         }).catch((error) => alert("sorry,you cannot sign in", error));
             
          
           }
