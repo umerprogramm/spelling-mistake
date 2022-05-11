@@ -14,3 +14,19 @@
 }
 
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+ }
+
+
+ .footer > img {
+     height: 40px;
+     float: right;
+     margin-right: 15px;
+     margin-bottom: 50px;
+     cursor: pointer;
+ }

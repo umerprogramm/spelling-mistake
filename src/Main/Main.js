@@ -101,7 +101,9 @@ export default function Main() {
     <button  onClick={spellingChecker} type="button" className="btn btn-success mx-2 my-2">Done</button>
     <button type="button" className="btn btn-primary mx-2" onClick={LoseTheGame}>I want lose the game</button>
 
-   
+    <div class="footer">
+  <img src='https://www.svgrepo.com/show/39675/trophy.svg'/>
+</div>
         
   </div>
   </>
