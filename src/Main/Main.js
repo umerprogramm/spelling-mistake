@@ -2,6 +2,7 @@ import React, { useState , useEffect } from 'react'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { Link } from 'react-router-dom';
 
 
 export default function Main() {
@@ -102,7 +103,7 @@ export default function Main() {
     <button type="button" className="btn btn-primary mx-2" onClick={LoseTheGame}>I want lose the game</button>
 
     <div class="footer">
-  <img src='https://www.svgrepo.com/show/39675/trophy.svg'/>
+  <Link  class='Link' to='/top_10'><img src='https://www.svgrepo.com/show/39675/trophy.svg'/></Link>
 </div>
         
   </div>

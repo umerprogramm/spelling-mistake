@@ -3,6 +3,7 @@ import Login from './Login/Login';
 import Header from './header/Header';
 import Main from './Main/Main';
 import { useSelector } from 'react-redux';
+import Main2 from './Main2/Main2'
 
 
 
@@ -15,7 +16,9 @@ function App() {
       login === 'login' || localStorage.getItem('email')?
       <>
            <Header/>
-           <Main/></>:
+           <Main2/>
+   
+           </>:
            <Login/>
            
            

@@ -10,7 +10,7 @@ import { logIn } from '../state/actions/action';
 export default function Login() {
     const { save } = useNewMoralisObject("Username");
     const Dispatch = useDispatch()
-    const { authenticate, isAuthenticated } = useMoralis();
+    const { authenticate, isAuthenticated  } = useMoralis();
 
 
 
@@ -18,9 +18,8 @@ export default function Login() {
       if (!isAuthenticated) {
 
         await authenticate()
-          .then(function (user) {
+          .then(function () {
   
-            console.log(user);
             Dispatch(logIn({login : "login" }))
 
           })
