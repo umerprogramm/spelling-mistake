@@ -1,0 +1,29 @@
+pre{
+    background-color: rgba(9, 158, 9, 0.2);
+    color: darkgreen;
+    font-size: medium;
+    font-weight: 700;
+    box-shadow: 5px 2px 5px 1px rgba(7, 71, 13, 0.75);
+    font-family: sans-serif;
+}
+
+ul{
+    list-style: none;
+    margin: 0%;  
+    padding: 5px; 
+    background-color: #cccbcb79;
+}
+ul > li {
+    display: flex;
+    flex-direction: row;
+    padding: 0%;
+    margin: 0%;
+    border:1px solid black;
+    border-radius: 15px;
+    background-color: aliceblue;
+}
+ul > li > li>img {
+    height: 50px;
+    margin: 5px;
+    border-radius: 50%;
+}
