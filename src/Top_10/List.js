@@ -8,7 +8,9 @@ export default function List(props) {
     <>
  
         <ul>
-          <li><li><img src={props.image}/></li>{props.username}</li>
+          <li><img src={props.image}/>  <li>{props.displayName}</li></li>
+         
+
         </ul>
   </>
   )

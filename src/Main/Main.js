@@ -3,6 +3,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
 import { useSpeechSynthesis } from 'react-speech-kit';
 import { Link } from 'react-router-dom';
+import { useMoralis } from 'react-moralis';
 
 
 export default function Main() {
@@ -11,6 +12,8 @@ export default function Main() {
   const [tellme , setTellme] = useState('')
   const [congratulation , setcongratulations] = useState(false)
   const [showme , setshowme] = useState('')
+  const { setUserData, isUserUpdating } = useMoralis();
+
   const { speak } = useSpeechSynthesis();
   useEffect(() => {
     const options = {
@@ -74,7 +77,6 @@ export default function Main() {
 
 
           }
-        {/* <button  type="button" className="btn btn-primary mx-2 my-3" >speak</button> */}
         <img src='https://static.thenounproject.com/png/1616157-200.png'onClick={ Speak }/>
           
         </>
@@ -101,8 +103,18 @@ export default function Main() {
 
     <button  onClick={spellingChecker} type="button" className="btn btn-success mx-2 my-2">Done</button>
     <button type="button" className="btn btn-primary mx-2" onClick={LoseTheGame}>I want lose the game</button>
+    <button
+      onClick={() => setUserData({
+        username: "umer",
+        email: "umer@marvel.com",
+      })}
+      disabled={isUserUpdating}
+    >
+      Set user data
+    </button>
 
     <div class="footer">
+      <span>Score : 0 </span>
   <Link  class='Link' to='/top_10'><img src='https://www.svgrepo.com/show/39675/trophy.svg'/></Link>
 </div>
         

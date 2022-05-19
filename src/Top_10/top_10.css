@@ -11,7 +11,6 @@ ul{
     list-style: none;
     margin: 0%;  
     padding: 5px; 
-    background-color: #cccbcb79;
 }
 ul > li {
     display: flex;
@@ -22,8 +21,13 @@ ul > li {
     border-radius: 15px;
     background-color: aliceblue;
 }
-ul > li > li>img {
+ul > li >img {
     height: 50px;
     margin: 5px;
     border-radius: 50%;
 }
+
+
+
+
+
