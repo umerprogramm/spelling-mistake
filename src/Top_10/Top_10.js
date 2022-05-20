@@ -9,7 +9,7 @@ export default function Top_10() {
   return (
     <div>
     <pre>TOP 10 List</pre>
-    {data.map(value =>{
+    {/* {data.map(value =>{
       return(
         <>
        <List
@@ -19,8 +19,8 @@ export default function Top_10() {
        </>
 
       )
-        })
-  }
+        }) */}
+  
 
    
    

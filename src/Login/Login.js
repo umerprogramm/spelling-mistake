@@ -24,16 +24,9 @@ export default function Login() {
               image : result.user.photoURL,
               displayName : result.user.displayName
             }
-            save(data, {
-              onSuccess: () => {
-                Dispatch(logIn({login : "login" }))
-                localStorage.setItem('email' , result.user.email )
-              },
-              onError: (error) => {
-            
-                alert("Failed to create new object, with error code: " + error.message);
-              },
-            });           
+            Dispatch(logIn({login : "login" }))
+            localStorage.setItem('email' , result.user.email )
+                      
              
          
          }).catch((error) => alert("sorry,you cannot sign in", error));

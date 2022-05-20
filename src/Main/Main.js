@@ -3,7 +3,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
 import { useSpeechSynthesis } from 'react-speech-kit';
 import { Link } from 'react-router-dom';
-import { useMoralis } from 'react-moralis';
+import * as Realm from "realm-web";
 
 
 export default function Main() {
@@ -12,7 +12,6 @@ export default function Main() {
   const [tellme , setTellme] = useState('')
   const [congratulation , setcongratulations] = useState(false)
   const [showme , setshowme] = useState('')
-  const { setUserData, isUserUpdating } = useMoralis();
 
   const { speak } = useSpeechSynthesis();
   useEffect(() => {
@@ -61,6 +60,22 @@ export default function Main() {
 
 }
 
+const Check = async ()=>{
+  const app = new Realm.App({ id: "spelling_checker-gccby" });
+  const credentials = Realm.Credentials.anonymous();
+
+  try {
+    const user = await app.logIn(credentials);
+    const data2 = await user.functions.GetData()
+    console.log(data2)
+  } catch(err) {
+    console.error("Failed to log in", err);
+  }
+
+
+
+}
+
   return (
     <>
 
@@ -103,15 +118,8 @@ export default function Main() {
 
     <button  onClick={spellingChecker} type="button" className="btn btn-success mx-2 my-2">Done</button>
     <button type="button" className="btn btn-primary mx-2" onClick={LoseTheGame}>I want lose the game</button>
-    <button
-      onClick={() => setUserData({
-        username: "umer",
-        email: "umer@marvel.com",
-      })}
-      disabled={isUserUpdating}
-    >
-      Set user data
-    </button>
+    <button onClick={Check}>Check</button>
+
 
     <div class="footer">
       <span>Score : 0 </span>
