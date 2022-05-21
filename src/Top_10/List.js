@@ -8,7 +8,7 @@ export default function List(props) {
     <>
  
         <ul>
-          <li><img src={props.image}/>  <li>{props.displayName}</li></li>
+          <li ><img src={props.image}/><li>{props.displayName} <span className='score'>Score : {props.score}</span></li></li>
          
 
         </ul>
