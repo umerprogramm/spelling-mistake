@@ -3,6 +3,8 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
 import { useSpeechSynthesis } from 'react-speech-kit';
 import { Link } from 'react-router-dom';
+import * as Realm from "realm-web";
+
 
 
 export default function Main() {
@@ -11,30 +13,52 @@ export default function Main() {
   const [tellme , setTellme] = useState('')
   const [congratulation , setcongratulations] = useState(false)
   const [showme , setshowme] = useState('')
+  const [score , setscore] = useState(0)
 
   const { speak } = useSpeechSynthesis();
   useEffect(() => {
+   const getData = ()=>{
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Host': 'random-words5.p.rapidapi.com',
+        'X-RapidAPI-Host': 'random-words-with-pronunciation.p.rapidapi.com',
         'X-RapidAPI-Key': '5057813bc5mshf5185e29384ee04p11c105jsna35f6923a250'
       }
     };
     
-    fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=5', options)
+    fetch('https://random-words-with-pronunciation.p.rapidapi.com/word/dutch', options)
       .then(response => response.json())
-      .then(response =>{
-        setTellme(response[1])
-          
-      
+      .then(response => {
+        console.log(response[0].definition)
+        setTellme(response[0].definition)
+
       })
       .catch(err => console.error(err));
-     
+   }
+   getData() 
   }, [showme]);
 
+  useEffect(()=>{
+    const update = async ()=>{
+      const app = new Realm.App({ id: "spelling_checker-gccby" });
+      const credentials = Realm.Credentials.anonymous();
+    
+      try {
+        const user = await app.logIn(credentials);
+        const data2 = await user.functions.UpdateScore("umeprogrammer@gmail.com" , score)
+        console.log(data2)
+      } catch(err) {
+        console.error("Failed to log in", err);
+      }
+    }
+    update()
+    console.log('hello')
+    
+  },[score])
 
-  const spellingChecker = ()=>{
+
+
+  const spellingChecker = async ()=>{
 
          if(updatingValue === ''){
            setstate(true)
@@ -44,6 +68,8 @@ export default function Main() {
       }else{
         setstate(true)
         setcongratulations(true)
+        setscore(100)
+       
 
       }
       
@@ -107,7 +133,7 @@ export default function Main() {
 
 
     <div class="footer">
-      <span>Score : 0 </span>
+      <span>Score : {score} </span>
   <Link  class='Link' to='/top_10'><img src='https://www.svgrepo.com/show/39675/trophy.svg'/></Link>
 </div>
         
