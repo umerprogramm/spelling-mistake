@@ -4,6 +4,8 @@ import { auth, provider } from '../firebase/Firebase'
 import {  signInWithPopup } from "firebase/auth";
 import { useDispatch } from 'react-redux'
 import { logIn } from '../state/actions/action';
+import * as Realm from "realm-web";
+
 
 
 export default function Login() {
@@ -15,10 +17,10 @@ export default function Login() {
 
    
 
-        async function Singn(){
+         function Singn(){
     
           signInWithPopup(auth,provider)
-          .then((result) => {
+          .then( async (result) => {
             const data = {
               email : result.user.email,
               image : result.user.photoURL,
@@ -26,6 +28,17 @@ export default function Login() {
             }
             Dispatch(logIn({login : "login" }))
             localStorage.setItem('email' , result.user.email )
+            const app = new Realm.App({ id: "spelling_checker-gccby" });
+            const credentials = Realm.Credentials.anonymous();
+            
+            try {
+              const user = await app.logIn(credentials);
+              const GetUsers = await user.functions.InsetUsers(data)
+              console.log(GetUsers)
+            } catch(err) {
+              console.error("Failed to log in", err);
+          }
+            
                       
              
          

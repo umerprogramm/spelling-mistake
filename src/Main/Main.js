@@ -38,43 +38,38 @@ export default function Main() {
    getData() 
   }, [showme]);
 
-  useEffect(()=>{
-    const update = async ()=>{
-      const app = new Realm.App({ id: "spelling_checker-gccby" });
-      const credentials = Realm.Credentials.anonymous();
-    
-      try {
-        const user = await app.logIn(credentials);
-        const data2 = await user.functions.UpdateScore("umeprogrammer@gmail.com" , score)
-        console.log(data2)
-      } catch(err) {
-        console.error("Failed to log in", err);
-      }
-    }
-    update()
-    console.log('hello')
-    
-  },[score])
-
+  
+  
 
 
   const spellingChecker = async ()=>{
 
          if(updatingValue === ''){
            setstate(true)
-         }
-        else if(updatingValue !== tellme){
-          setstate(false)
-      }else{
-        setstate(true)
-        setcongratulations(true)
-        setscore(100)
+          }
+          else if(updatingValue !== tellme){
+            setstate(false)
+          }else{
+            setstate(true)
+            setcongratulations(true)
+        const app = new Realm.App({ id: "spelling_checker-gccby" });
+        const credentials = Realm.Credentials.anonymous();
+      
+        try {
+          const user = await app.logIn(credentials);
+          const data2 = await user.functions.GetUsers()
+         await user.functions.UpdateScore(localStorage.getItem("email") , data2[0].score + 100)
+        
+          setscore(data2[0].score)
+        } catch(err) {
+          console.error("Failed to log in", err);
+        }
        
 
       }
       
 
-
+      
       }
       const Speak = ()=>{
         speak({text : tellme })
@@ -103,7 +98,7 @@ export default function Main() {
 
 
           }
-        <img src='https://static.thenounproject.com/png/1616157-200.png'onClick={ Speak }/>
+        <img src='https://static.thenounproject.com/png/1616157-200.png'onClick={ Speak } alt='speak'/>
           
         </>
    
@@ -134,7 +129,7 @@ export default function Main() {
 
     <div class="footer">
       <span>Score : {score} </span>
-  <Link  class='Link' to='/top_10'><img src='https://www.svgrepo.com/show/39675/trophy.svg'/></Link>
+  <Link  class='Link' to='/top_10'><img src='https://www.svgrepo.com/show/39675/trophy.svg' alt='trophy'/></Link>
 </div>
         
   </div>
