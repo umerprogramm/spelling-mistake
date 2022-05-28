@@ -12,39 +12,63 @@ export default function Login() {
 
     const Dispatch = useDispatch()
 
+    const {useState , useEffect } = React
+
+
+    const [state , setstate] = useState()
+
+
+     
+
 
 
 
    
 
-         function Singn(){
-    
+  function Singn(){
+  
           signInWithPopup(auth,provider)
           .then( async (result) => {
             const data = {
               email : result.user.email,
               image : result.user.photoURL,
-              displayName : result.user.displayName
+              displayName : result.user.displayName,
+      
             }
-            Dispatch(logIn({login : "login" }))
-            localStorage.setItem('email' , result.user.email )
             const app = new Realm.App({ id: "spelling_checker-gccby" });
             const credentials = Realm.Credentials.anonymous();
             
             try {
               const user = await app.logIn(credentials);
-              const GetUsers = await user.functions.InsetUsers(data)
-              console.log(GetUsers)
+              const data2 = await user.functions.GetUsers()
+              if(data2.length === 0){
+                    const GetUsers = await user.functions.InsetUsers(data)
+                    console.log(GetUsers)
+                    window.location.reload();
+                    
+              
+                  
+              
+              }else{
+                localStorage.setItem('email' , result.user.email )
+                window.location.reload();
+
+                
+              }
+              
+
+            
             } catch(err) {
               console.error("Failed to log in", err);
           }
+        
             
                       
              
          
-         }).catch((error) => alert("sorry,you cannot sign in", error));
-            
-         
+        }).catch((error) => alert("sorry,you cannot sign in", error));
+      
+        
           }
 
         
