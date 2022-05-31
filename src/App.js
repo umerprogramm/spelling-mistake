@@ -35,10 +35,11 @@ function App() {
   const login = useSelector((state)=>state.ChangeState.login)
 
   return (
-    <>
+    <div className='app'>
     {
     login==='login' || state === true ?
-      <>
+    <>
+      
            <Header/>
            <Main2/>
    
@@ -46,10 +47,11 @@ function App() {
            <Login/>
            
            
-   
+           
+           
           }
 
-    </>
+          </div>
   );
 }
 

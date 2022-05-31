@@ -5,6 +5,7 @@ import {  signInWithPopup } from "firebase/auth";
 import { useDispatch } from 'react-redux'
 import { logIn } from '../state/actions/action';
 import * as Realm from "realm-web";
+import image from './graph.png' 
 
 
 
@@ -73,14 +74,15 @@ export default function Login() {
 
         
         return (
-        <>
+          <div className='container'>
         <div className='login'>
             <h1>Wellcome to spelling Checker</h1>
+            <p>Play and check your spelling Skill and get award To start the Game please Sign with Google</p>
             <button  type="button" className="btn btn-primary mx-2 my-3" onClick={ Singn }>Sign in with Google</button>
-           
+
       
         </div>
-        </>
+        </div>
         )
 
 }
